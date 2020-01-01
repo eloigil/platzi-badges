@@ -8,6 +8,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import "./global.css";
 import BadgeNew from "./pages/BadgeNew";
 
 // const name = "Eloi";
