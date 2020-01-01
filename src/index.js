@@ -8,7 +8,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Badge from "./components/Badge";
+import BadgeNew from "./pages/BadgeNew";
 
 // const name = "Eloi";
 // const element = React.createElement("h1", {}, `Hola, me llamo ${name}`);
@@ -23,12 +23,4 @@ import Badge from "./components/Badge";
 const container = document.getElementById("app");
 
 // ReactDOM.render(__qué__, __dónde__);
-ReactDOM.render(
-  <Badge
-    firstName="Eloi"
-    lastName="Gil"
-    jobTitle="Frontend Hero"
-    twitter="lalalal"
-  />,
-  container
-);
+ReactDOM.render(<BadgeNew />, container);
