@@ -6,8 +6,8 @@ import confLogo from "../images/badge-header.svg";
 
 class Badge extends React.Component {
   render() {
-    const firstName = "Eloi";
-    const lastName = "Gil";
+    // const firstName = "Eloi";
+    // const lastName = "Gil";
 
     return (
       <div className="Badge">
