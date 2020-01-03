@@ -7,12 +7,13 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap.css";
 
+import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
+
 import BadgeNew from "./pages/BadgeNew";
 import Badges from "./pages/Badges";
-
+import App from "./components/App";
 // const name = "Eloi";
 // const element = React.createElement("h1", {}, `Hola, me llamo ${name}`);
 // const jsx = <h1>Hola, me llamo {2 + 2}</h1>;
@@ -26,4 +27,4 @@ import Badges from "./pages/Badges";
 const container = document.getElementById("app");
 
 // ReactDOM.render(__qué__, __dónde__);
-ReactDOM.render(<Badges />, container);
+ReactDOM.render(<App />, container);
