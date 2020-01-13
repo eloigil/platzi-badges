@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import api from "../";
+import api from "../api";
 
 import "./styles/Badges.css";
 import confLogo from "../images/badge-header.svg";
 
 import BadgesList from "../components/BadgesList";
+import PageLoading from "../components/PageLoading";
 
 class Badges extends React.Component {
   constructor(props) {
@@ -21,11 +22,11 @@ class Badges extends React.Component {
     this.fetchData();
   }
 
-  fetchData = () => {
+  fetchData = async () => {
     this.setState({ loading: true, error: null });
 
     try {
-      const data = [];
+      const data = await api.badges.list();
       this.setState({ loading: false, data: data });
     } catch (error) {
       this.setState({ loading: true, error: error });
@@ -34,7 +35,11 @@ class Badges extends React.Component {
 
   render() {
     if (this.state.loading === true) {
-      return "Loading...";
+      return <PageLoading />;
+    }
+
+    if (this.state.error) {
+      return `Error ${this.state.error.message}`;
     }
     return (
       <Fragment>
@@ -50,7 +55,7 @@ class Badges extends React.Component {
           </div>
         </div>
 
-        <div className="Badge__container">
+        <div className="Badges__container">
           <div className="Badges__buttons">
             <Link to="/badges/new" className="btn btn-primary">
               New badge
