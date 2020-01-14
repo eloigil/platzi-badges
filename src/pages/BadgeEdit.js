@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import "./styles/BadgeNew.css";
+import "./styles/BadgeEdit.css";
 import header from "../images/badge-header.svg";
 
 import Badge from "../components/Badge";
@@ -8,9 +8,9 @@ import BadgeForm from "../components/BadgeForm";
 import PageLoading from "../components/PageLoading";
 import api from "../api";
 
-class BadgeNew extends React.Component {
+class BadgeEdit extends React.Component {
   state = {
-    loading: false,
+    loading: true,
     error: null,
     form: {
       firstName: "",
@@ -18,6 +18,20 @@ class BadgeNew extends React.Component {
       email: "",
       jobTitle: "",
       twitter: ""
+    }
+  };
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async e => {
+    this.setState({ loading: true, error: null });
+    try {
+      const data = await api.budges.read(this.props.match.params.badgeId);
+      this.setState({ loading: false, form: data, error: null });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
     }
   };
 
@@ -48,7 +62,7 @@ class BadgeNew extends React.Component {
     }
     return (
       <Fragment>
-        <div className="BadgeNew__hero">
+        <div className="BadgeEdit__hero">
           <img className="img-fluid" src={header} alt="Logo" />
         </div>
 
@@ -64,7 +78,7 @@ class BadgeNew extends React.Component {
               />
             </div>
             <div className="col-6">
-              <h1>New Attendant</h1>
+              <h1>Edit Attendant</h1>
               <BadgeForm
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
@@ -79,4 +93,4 @@ class BadgeNew extends React.Component {
   }
 }
 
-export default BadgeNew;
+export default BadgeEdit;
